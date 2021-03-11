@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  edge:
+    image: emqx/emqx-edge:4.2.7
+    container_name: edge
+    hostname: edge
+    ports:
+      - 1883:1883 # for MQTT
+      - 8883:8883 # for MQTTS
+      - 8084:8084
+      - 18083:18083 # end point for Edge Manager
+  kuiper:
+    image: emqx/kuiper:1.1.1
+    container_name: kuiper
+    ports:
+      - 9081:9081
+      - 20498:20498
+    environment:
+      MQTT_SOURCE__DEFAULT__SERVERS: "[tcp://edge:1883]"
