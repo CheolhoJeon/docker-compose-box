@@ -13,6 +13,6 @@ services:
     ports:
       - 15432:5432
     volumes:
-      - "${POSTGRES_HOME}/data/:/var/lib/postgresql/data/"
+      # - "${POSTGRES_HOME}/data/:/var/lib/postgresql/data/"
       - "${POSTGRES_INIT}/:/docker-entrypoint-initdb.d"
     
